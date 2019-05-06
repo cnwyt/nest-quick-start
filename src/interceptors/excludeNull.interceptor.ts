@@ -7,8 +7,9 @@ import { map } from 'rxjs/operators';
 export class ExcludeNullInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
+        // map(value => value === null ? '' : value)
         map(value => {
-          value === null ? '111' : value 
+          return value === null ? '' : value
         })
     );
   }

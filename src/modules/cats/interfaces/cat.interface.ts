@@ -1,5 +1,5 @@
 // nest g interface interfaces/cats
-export interface Cat {
+export interface ICat {
     name: string;
     age: number;
     breed: string;

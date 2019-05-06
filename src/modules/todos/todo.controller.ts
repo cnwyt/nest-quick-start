@@ -1,9 +1,8 @@
 import { Controller, Get, Post, Param, Delete, Put, Body, Request, Req, HttpException, HttpStatus, Res } from '@nestjs/common';
 import { TodoService } from './todo.service';
-import { Todo } from '../../entity/todolist/todo.entity';
-import { UpdateCatDto } from '../../dto/update-cat.dto';
 import { ApiException } from '../../common/exceptions/api.exception';
 import { ApiErrorCode } from '../../common/enums/api-error-code.enum';
+import { Todo } from '../../entity/todo.entity';
 
 @Controller('todo')
 export class TodoController {

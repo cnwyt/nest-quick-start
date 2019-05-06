@@ -1,11 +1,19 @@
 import { Controller, Get, Post, HttpCode, Param, Body, Put, Delete } from '@nestjs/common';
-import { CreateCatDto } from '../dto/create-cat.dto';
-import { UpdateCatDto } from '../dto/update-cat.dto';
+import { CreateCatDto } from './dto/create-cat.dto';
+import { UpdateCatDto } from './dto/update-cat.dto';
+import { CatsService } from './cats.service';
 
 @Controller('cats')
 export class CatsController {
+  constructor(private readonly catsService: CatsService) {}
+
+  @Get('test') 
+  runTest() {
+    return 'This action returns test.';
+  }
+
   @Get()
-  findAll() {
+  findAll() : string {
     return 'This action returns all cats';
   }
 

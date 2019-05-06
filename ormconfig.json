@@ -4,8 +4,8 @@
   "port": 3306,
   "username": "homestead",
   "password": "secret",
-  "database": "test",
+  "database": "testdb",
   "entities": ["src/**/**.entity{.ts,.js}"],
   "logging": true,
-  "synchronize": true
+  "synchronize": false
 }
