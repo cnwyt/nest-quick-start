@@ -20,6 +20,9 @@ describe('CatsController', () => {
       expect(catsController.runTest()).toContain('test');
     });
   });
+  it('should be defined', () => {
+    expect(catsController).toBeDefined();
+  });
   // describe('findAll', () => {
   //   it('should return an array of cats', async () => {
   //     const result = ['test'];

@@ -7,7 +7,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
+  getIndex(): Object {
+    return this.appService.getIndex();
+  }
+
+  @Get('/hello')
+  getHello(): Object {
     return this.appService.getHello();
   }
 

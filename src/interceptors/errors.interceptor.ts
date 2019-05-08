@@ -15,7 +15,8 @@ import {
       return next
         .handle()
         .pipe(
-          catchError(err => throwError(new BadGatewayException())),
+          // catchError(err => throwError(new BadGatewayException())),
+          // catchError(err => throwError(new BadGatewayException())),
         );
     }
   }

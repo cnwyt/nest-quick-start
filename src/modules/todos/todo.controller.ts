@@ -11,13 +11,13 @@ export class TodoController {
   ) {}
 
   @Get()
-  findAll(): Promise<Todo[]> {
+  findAll(@Param() params): Promise<Todo[]> {
     console.log("-->TodoController: findAll");
-    return this.todoService.findAll();
+    return this.todoService.findAll(params);
   }
 
   @Get(':id')
-  findOne(@Res() res, @Param() params, @Body() body) {
+  findOne(@Param() params, @Body() body) {
     let id = parseInt(params.id);
     // info('----->自定义日志');
     console.warn(id)
@@ -42,11 +42,13 @@ export class TodoController {
   create(@Param() params, @Body() body) {
     console.log("-->TodoController:  create");
     console.log(params);
-    console.log(body);
-    // this.logger.log(messages.APPLICATION_START);
+    console.log(body.title); 
+    if(body.title == '' || typeof body.title == 'undefined') {
+      throw new ApiException('参数错误:title', ApiErrorCode.INVALID_USER_ID, HttpStatus.OK);
+    }
 
-    this.todoService.create(params)
-    return '-->TodoController: This action adds a new cat';
+    let res = this.todoService.create(body)
+    return res;
   }
 
   @Put(':id')

@@ -6,7 +6,9 @@ import { CatsModule } from './cats.module';
 
 describe('Cats', () => {
   let app: INestApplication;
-  let catsService = { findAll: () => ['test'] };
+  let catsService = { 
+    findAll: () => ['id'] 
+  };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -21,12 +23,23 @@ describe('Cats', () => {
   });
 
   it(`/GET cats`, () => {
-    return request(app.getHttpServer())
+    var a = request(app.getHttpServer())
       .get('/cats')
       .expect(200)
-      .expect({
-        data: catsService.findAll(),
-      });
+      .expect(function(res) {
+        console.log(res)
+        res.body.id = 'some fixed id';
+        res.body.name = res.body.name.toLowerCase();
+      })
+    //   .then(response => {
+    //     console.log(response)
+    //     // expect(response.body).toContain('content')
+    // })
+      // .expect({
+      //   data: catsService.findAll(),
+      // });
+
+    
   });
 
   afterAll(async () => {
